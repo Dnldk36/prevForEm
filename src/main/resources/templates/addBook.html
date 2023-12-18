@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <link rel="icon" href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/style/MainFileCss.css">
+</head>
+<body>
+
+<header th:insert="blocks/header :: header2"></header>
+
+
+<div sec:authorize="hasAuthority('ADMIN')" class="add-new-book-container center" id="add-new-book-container">
+
+    <div class="center add-book-container" id="add-book-container">
+
+        <form method="post" action="/main/addBook" enctype="multipart/form-data">
+
+            <div class="title">Add New Book</div>
+            <div class="add-book">
+                <div class="add-book-info">
+                    <div class="validate-input">
+                        <input type="text" class="main-input" name="bookName" placeholder="Book Name">
+                        <span class="focus-main-input"></span>
+                    </div>
+                    <div class="validate-input">
+                        <input type="text" class="main-input" name="bookTag" placeholder="Book tag" id="tag">
+                        <span class="focus-main-input"></span>
+                    </div>
+                    <div class="validate-input">
+                        <input type="text" class="main-input" name="bookPrice" placeholder="Coast" id="balance">
+                        <span class="focus-main-input"></span>
+                    </div>
+
+                    <div class="uploaded-file">
+                        <p id="demo"></p>
+                    </div>
+                </div>
+
+                <div class="add-book-image-container">
+                    <div class="add-book-image pannel">
+                        <img height="100px" width="100px" id="output"/>
+                    </div>
+
+                    <div class="book-inputs">
+                        <input class="input-book-file" type="file" name="bookImg" id="bookImg"
+                               onchange="loadFile(event)">
+                        <label for="bookImg" class="input-file">Choose Img</label>
+                        <input class="input-book-file" type="file" name="bookFile" id="bookFile" accept="application/pdf"
+                               onchange="myFunction()">
+                        <label for="bookFile" class="input-file">Choose File</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <textarea class="main-input" name="bookDescription" id="" cols="30" placeholder="Description"
+                      rows="5"></textarea>
+
+            <button type="submit" title="Fill in all missing fields" class="green-button" id="confirm-button">
+                <div class="button-text">Add</div>
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<script src="/style/script/bookList.js"></script>
+</body>
+</html>

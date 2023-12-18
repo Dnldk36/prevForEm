@@ -1,0 +1,35 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6" xmlns="http://www.w3.org/1999/html" lang="en">
+
+<div th:fragment="header">
+    <header class="header">
+        <nav class="menu center">
+            <div class="home">
+                <div class="menu-image"><img src="/style/images/arrow1.png" alt="arrow1"></div>
+                <a th:href="@{/home}" class="home-text">Home</a>
+            </div>
+            <a th:href="@{/}" class="logo"><img src="/style/images/logo.png" alt="logo"></a>
+        </nav>
+    </header>
+</div>
+
+<th:block th:fragment="header2">
+    <header class="header">
+        <nav class="menu center">
+            <div class="home">
+                <div class="menu-image"><img src="../style/images/arrow1.png" alt="arrow1"></div>
+                <a th:href="@{/home}" class="home-text">Home</a>
+            </div>
+            <div class="menu-item">
+                <a th:href="@{/main}" class="nav-item">Book Catalog</a>
+            </div>
+            <div class="menu-item">
+                <a th:href="@{/test}" class="nav-item">Test List</a>
+            </div>
+            <div sec:authorize="hasAuthority('ADMIN')" class="menu-item">
+                <a th:href="@{/user}" class="nav-item">User List</a>
+            </div>
+            <a th:href="@{/}" class="nav-item"><img src="../style/images/logo.png" alt="logo"></a>
+        </nav>
+    </header>
+</th:block>

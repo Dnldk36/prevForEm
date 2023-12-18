@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>HOME</title>
+    <link rel="icon"  href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/style/MainFileCss.css">
+</head>
+<body>
+<h1 class="profile-title">Welcome <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+
+<div class="profile-container center">
+    <div class="options">
+        <div class="profile-column-title">Options</div>
+        <div sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/user}"><div class="pannel">User list</div></a></div>
+        <a th:href="@{/test}"><div class="pannel">Test list</div></a>
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/test/addTest}"><div class="pannel">Create a test</div></a>
+        <a th:href="@{/main}"><div class="pannel">Book catalog</div></a>
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/main/addBook}"><div class="pannel">Add new book</div></a>
+        <a th:href="@{/profile}"><div class="pannel">Action history</div></a>
+    </div>
+
+    <div class="profile-info">
+        <div class="profile-column-title">Your info</div>
+        <div class="pannel">
+            <div class="profile-info-text">
+                <span>Tests passed: </span><th:block th:text="${userInfo.getTestConfirm()}" />
+            </div>
+            <div class="profile-info-text">
+                <span>E-mail: </span><th:block th:text="${userInfo.getEmail()}" />
+            </div>
+            <div class="profile-info-text">
+                <span>Balance: </span><th:block th:text="${userInfo.getBalance()} + ' LC'" />
+            </div>
+
+            <form th:action="@{/logout}" method="post">
+                <button class="red-button" type="submit">
+                    <div class="button-text">Sign Out</div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

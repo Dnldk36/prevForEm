@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmer Library</title>
+    <link rel="icon" href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/style/MainFileCss.css">
+</head>
+<body>
+<header class="header landing" id="header">
+    <nav class="menu center">
+        <img id="header-logo" src="/style/images/logo.png" class="menu-item-logo" alt="logo">
+        <div data-link="why" class="menu-item">
+            <a  class="nav-item">Why choose us?</a>
+        </div>
+        <div data-link="library-coin" class="menu-item">
+            <a  class="nav-item">LibraryCoin</a>
+        </div>
+        <div data-link="sign-up"  class="menu-item">
+            <a class="nav-item">Sign Up</a>
+        </div>
+    </nav>
+</header>
+<section class="landing-main">
+    <div class="landing-main-container center">
+        <div class="landing-title">programmer library</div>
+        <div class="landing-tag-line">Read, earn and improve your knowledge level</div>
+        <div class="landing-text center">Discover a world of knowledge and adventure with our website! Here you can not only improve your skills and knowledge by taking interesting tests, but also exchange the points you earn for exciting books. Don't miss the chance to make learning even more fun!</div>
+    </div>
+</section>
+<section class="why-choose-us" id="why">
+    <div class="landing-title">why choose us?</div>
+    <div class="why-list center">
+        <div class="why-item">
+            <div class="why-icon">
+                <img src="/style/images/coin.png" alt="">
+            </div>
+            <div class="why-title">
+                Your knowledge is your currency
+            </div>
+            <div class="why-text">
+                Buy new books using the currency you get from quizzes
+            </div>
+        </div>
+        <div class="why-item">
+            <div class="why-icon">
+                <img src="/style/images/learning.png" alt="">
+            </div>
+            <div class="why-title">
+                Supports lifelong learning
+            </div>
+            <div class="why-text">
+                Our website supports lifelong learning and reading, offering users the opportunity to continually learn and develop.
+            </div>
+        </div>
+        <div class="why-item">
+            <div class="why-icon">
+                <img src="/style/images/game.png" alt="">
+            </div>
+            <div class="why-title">
+                Game-based learning
+            </div>
+            <div class="why-text">
+                Our website uses game elements to make the learning process more interactive and fun
+            </div>
+        </div>
+    </div>
+</section>
+<section class="library-coin" id="library-coin">
+    <div class="library-coin-container center">
+        <div class="landing-title library-coin-title">library coin</div>
+        <div class="library-coin-item">
+            <div class="why-title">What is LibraryCoin?</div>
+            <div class="why-text">LC is a virtual currency operating on our platform</div>
+        </div>
+        <div class="library-coin-instruction">
+            <div class="why-title">How to get LC?</div>
+            <div class="instruction-container">
+                <div class="why-text">Find this button in your profile</div>
+                <div class="why-text instruction">Choose the test you like</div>
+                <div class="why-text">Get your reward</div>
+            </div>
+        </div>
+        <div class="library-coin-item-right">
+            <div class="why-title">What can you spend LC on?</div>
+            <div class="why-text">LC can be spent on purchasing books in our catalogue</div>
+        </div>
+    </div>
+</section>
+<section class="sign-up-section" id="sign-up">
+    <div class="sign-up-container center">
+        <div class="landing-title sign-up">become a part of our community</div>
+        <div class="sign-up-buttons">
+            <button type="submit" id="confirm-button" class="landing-button" onclick="goToSingIn()">
+                <div class="button-text">Sign In</div>
+            </button>
+            <button type="submit" id="confirm-button" class="landing-button" onclick="goToSingUp()">
+                <div class="button-text">Sign Up</div>
+            </button>
+        </div>
+    </div>
+</section>
+
+<script src="/style/script/main.js"></script>
+<footer th:insert="blocks/footer :: footer2"></footer>
+</body>
+</html>

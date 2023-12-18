@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title> Registration </title>
+    <link rel="icon"  href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/style/MainFileCss.css">
+</head>
+<body>
+
+
+    <div class="title">programmer library</div>
+        <div class="registration-container center">
+            <div class="return">
+                <div class="return-image">
+                    <img src="/style/images/arrow.png" alt="arrow">
+                </div>
+                <a th:href="@{/}" class="return-text">Return to main page</a>
+            </div>
+            <form action="/registration" method="post" class="registration-form">
+                <div class="form-title">sign up</div>
+                <div class="inputs validate-input">
+                    <input type="text" autocomplete="" class="main-input" name="email" placeholder="E-mail" id="email">
+                    <span class="focus-main-input"></span>
+                </div>
+                <div class="inputs validate-input">
+                    <input type="text" class="main-input" placeholder="Username" name="username" id="username">
+                    <span class="focus-main-input"></span>
+                </div>
+                <div class="inputs validate-input">
+                    <input type="password" class="main-input" placeholder="Password" name="password" id="password">
+                    <span class="focus-main-input"></span>
+                </div>
+                <button type="" class="green-button" id="confirm-button" >
+                    <div class="button-text">
+                        Sign Up
+                    </div>
+                </button>
+                <a th:href="@{/login}" class="link">I already have an account</a>
+            </form>
+        </div>
+    <script src="/style/script/registration-login.js"></script>
+</body>
+</html>

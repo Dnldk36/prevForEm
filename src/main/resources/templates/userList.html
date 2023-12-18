@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UserList</title>
+    <link rel="icon" href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/style/MainFileCss.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header2"></header>
+
+
+<div class="user-list-container center">
+    <div th:each="user : ${userList}">
+        <div class="user-title" th:text="'ID: ' + ${user.getId()}"/>
+        <div class="user">
+
+            <div th:class="${user.isActiveEmailAccount()} ? 'email-indicator-confirm' : 'email-indicator'" id="email-indicator"></div>
+            <div th:class="${user.isActiveEmailAccount()} ? 'user-info-confirm pannel' : 'user-info pannel'" id="user-pannel">
+
+            <div class="user-list-column">
+                        <div><span>Username: </span>
+                            <th:block th:text="${user.getUsername()}"/>
+                        </div>
+                        <div><span>E-mail: </span>
+                            <th:block th:text="${user.getEmail()}"/>
+                        </div>
+                        <div><span>Tests passed: </span>
+                            <th:block th:text="${user.getTestConfirm()}"/>
+                        </div>
+                    </div>
+                    <div class="user-list-column">
+                        <div class="user-balance" th:text="${user.getBalance()} + ' LC'"></div>
+                        <div class="buttons">
+                            <a th:href="@{/user/{userId}(userId = ${user.getId()})}" class="edit">Edit</a>
+                            <a th:href="@{/user/delete/{userId}(userId = ${user.getId()})}"  class="red-button delete">
+                                <div class="button-text">Delete</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="/style/script/userList.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SubmitTest</title>
+    <link rel="icon" href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/style/MainFileCss.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header2"></header>
+
+<div class="finish-container center">
+    <div class="finish-main-title">Great you finish test</div>
+
+    <div class="finish-title" th:text="'You`ve completed the test, your score: ' +${score}"/>
+
+    <div class="finish-text" th:unless="${isFirstTime}">
+        <p>You won't get points for one of these reasons:</p>
+        <ul>
+            <li>You have already taken this test</li>
+            <li>You have not completed previous tests</li>
+        </ul>
+    </div>
+
+    <div class="finish-buttons">
+        <a th:href="@{/profile}"><div class="pannel">Profile</div></a>
+        <a th:href="@{/test}"><div class="pannel">Test List</div></a>
+    </div>
+</div>
+
+</body>
+</html>

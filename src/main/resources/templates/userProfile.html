@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="icon" href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/style/MainFileCss.css">
+</head>
+<body>
+
+<header th:insert="blocks/header :: header2"></header>
+
+<div class="title"><p th:text="Profile + ' | ' + ${isEmailActive}"/></div>
+<div class="action-list-container center pannel">
+    <div class="action-item" th:each="active : ${userInfo.getActivity()}">
+        <p th:text="${userInfo.getUsername()} + ' ' +  ${active.getText()}"/>
+    </div>
+    <div class="balance"><p th:text="Balance + ': ' + ${userInfo.getBalance()}"/> </div>
+</div>
+
+</body>
+</html>

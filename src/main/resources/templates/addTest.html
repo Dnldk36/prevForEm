@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание теста</title>
+    <link rel="icon" href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/style/MainFileCss.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header2"></header>
+<br><br><br><br>
+<h1>Создание теста</h1>
+<div>
+    <label for="testName">Название теста:</label>
+    <input type="text" id="testName" placeholder="Введите название теста">
+</div>
+
+<div id="questions-container">
+    <h2>Вопросы:</h2>
+</div>
+<button onclick="addQuestion()">Добавить вопрос</button>
+<div><button onclick="submitTest()">Отправить на сервер</button></div>
+
+
+<script src="/style/script/createTest.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+

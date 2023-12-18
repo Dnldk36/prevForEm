@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Edit Form</title>
+    <link rel="icon" href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/style/MainFileCss.css">
+</head>
+<body>
+
+<form action="/user" method="post" enctype="multipart/form-data">
+
+    <div class="change-user-info-container pannel center">
+        <div id="change-user-info">
+            <input type="hidden" th:value="${user.getId()}" name="userId">
+            <div th:each="role : ${roleList}">
+                    <label >
+                        <input type="checkbox" th:name="${role}"
+                               th:checked="${user.roles.contains(role)} ? 'checked' : null" th:value="${role}"/>
+                        <span class="checkbox-title" th:text="${role}"></span>
+                    </label>
+            </div>
+            <div class="change-inputs">
+                <div class="edit-username">
+                    <div class="username">Username:</div>
+                    <div class="inputs validate-input">
+                        <input type="text" class="main-input change-username" name="userName"
+                               th:value="${user.getUsername()}">
+                        <span class="focus-main-input"></span>
+                    </div>
+                </div>
+                <div class="edit-balance">
+                    <div class="inputs validate-input">
+                        <input type="number" class="main-input change-balance" th:value="${user.getBalance()}"
+                               name="userBalance">
+                        <span class="focus-main-input"></span>
+                        <div class="balance">LC</div>
+                    </div>
+                </div>
+            </div>
+            <button class="green-button" type="submit">
+                <div class="button-text">Confirm</div>
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<script src="/style/script/userList.js"></script>
+</body>
+</html>

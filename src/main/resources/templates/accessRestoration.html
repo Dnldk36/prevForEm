@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Restoration</title>
+</head>
+<body>
+
+
+    <div th:unless="${NewPassword}">
+        <div th:unless="${showCode}">
+            <form method="post" action="/accessRestoration">
+
+                <br>Username<br>
+                <input type="text" name="UserName" placeholder="Enter username">
+                <br th:text="${UserMessage}"/>
+
+                Email<br>
+                <input type="text" name="UserEmail" placeholder="Enter email">
+                <br th:text="${EmailMessage}"/>
+
+                <br><button type="submit">Send</button>
+            </form>
+        </div>
+
+        <div th:if="${showCode}">
+            <form method="post" action="/accessRestoration/code">
+
+                <input type="hidden" name="UserNameForCode" th:value="${UserNameForCode}">
+
+                <br>Code<br>
+                <input type="number" name="UserCode" placeholder="enter code">
+                <br th:text="${CodeMessenger}"/>
+
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <div th:if="${NewPassword}">
+        <form method="post" action="/accessRestoration/newPassword">
+
+            <input type="hidden" name="UserNameForCode" th:value="${UserNameForNewPassword}">
+
+            <br>Password<br>
+            <input type="password" name="UserPassword" placeholder="enter password">
+            <br>Password Confirm<br>
+            <input type="password" name="UserPasswordConfirm" placeholder="enter password">
+
+            <p th:text="${UserMessageNull}"/>
+            <p th:text="${SamePasswordMessage}"/>
+            <p th:text="${PasswordMessage}"/>
+
+            <button type="submit">Confirm</button>
+        </form>
+    </div>
+
+</body>
+</html>

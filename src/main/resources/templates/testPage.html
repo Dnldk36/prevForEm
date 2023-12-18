@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>testPage</title>
+    <link rel="icon" href="/style/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/style/MainFileCss.css">
+</head>
+<body>
+
+<header th:insert="blocks/header :: header2"></header>
+
+<form action="/test/sendResult" method="post">
+
+    <div>
+        <input type="hidden" style="position: absolute" th:value="${getTest.getTestTitle()}" name="testTitle">
+        <input type="hidden" style="position: absolute" th:value="${getTest.getId()}" name="testId">
+
+        <div class="question-list-title center" th:text="${getTest.getTestTitle()}"/>
+    </div>
+    <div class="question-list center">
+
+        <th:block th:each="question, questionStat  : ${getTest.getQuestions()}">
+
+            <div class="question-list-item pannel">
+                <div class="test-question" th:text="${'' + question.getQuestionText()}"/>
+
+                <input type="hidden" th:value="${question.getQuestionText()}"
+                       th:name="${'questions[' + questionStat.index + ']'}">
+                <input type="hidden" th:value="${question.getCorrectAnswerText()}"
+                       th:name="${'correctAnswers[' + questionStat.index + ']'}">
+
+                <div class="answers">
+                    <div class="test-answer">
+                        <div th:each="answer : ${question.getAnswers()}">
+                            <input type="radio" id="answer1"
+                                   th:value="${answer.getAnswerText()}"
+                                   th:text="${answer.getAnswerText()}"
+                                   th:name="${'userAnswers[' + questionStat.index + ']'}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
+        <button type="submit" class="green-button test center">
+            <div class="button-text">Finish Test</div>
+        </button>
+    </div>
+</form>
+
+<!-- Сообщение, которое будет отображаться после отправки формы -->
+<div th:if="${message}" th:text="${message}"></div>
+
+</body>
+</html>
